@@ -1,0 +1,17 @@
+
+
+grafana_container_update:
+  image: docker:latest
+  stage: build_container
+
+  services:
+    - docker:dind
+  before_script:
+    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - docker login ${AzureCR} --username ${ACR_user} --password ${ACR_token}
+    - docker build -t ${AzureCR}/grafana-dev:latest containers/grafana/
+    - docker push ${AzureCR}/grafana-dev:latest
+  rules:
+    - changes:
+        - containers/grafana/Dockerfile

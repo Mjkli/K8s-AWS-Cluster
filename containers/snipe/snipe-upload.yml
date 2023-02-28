@@ -1,0 +1,17 @@
+
+snipe_container_update:
+  image: docker:latest
+  stage: build_container
+
+  services:
+    - docker:dind
+
+  script:
+    - docker login ${AzureCR} --username ${Azure_SP_ID} --password ${Azure_SP_Pass}
+    - docker build -t ${AzureCR}/snipe-dev:latest containers/snipe/
+    - docker push ${AzureCR}/snipe-dev:latest
+  rules:
+    - changes:
+        - containers/snipe/Dockerfile
+        - containers/snipe/.gitlab-ci.yml
+
