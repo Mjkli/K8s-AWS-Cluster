@@ -13,12 +13,12 @@ jobs:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
       
-      - name: Terraform validate
-        run: terraform validate
-        working-directory: Infra/dev
-      
       - name: Terraform Init
         run: terraform init
+        working-directory: Infra/dev
+      
+      - name: Terraform validate
+        run: terraform validate
         working-directory: Infra/dev
       
       - name: Terraform Plan
