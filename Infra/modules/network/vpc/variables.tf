@@ -1,2 +1,3 @@
 variable "vpc_cidr_block" {}
-variable "tag" {}
+variable "project" {}
+variable "env" {}

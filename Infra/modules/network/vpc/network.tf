@@ -1,8 +1,9 @@
 resource "aws_vpc" "main" {
-    cidr_block = var.vpc_cider_block
+    cidr_block = var.vpc_cidr_block
 
     tags = {
-      "Name" = var.tag
+      project = var.project
+      env = var.env
     }
 }
 
@@ -10,11 +11,12 @@ resource "aws_internet_gateway" "igw" {
     vpc_id = aws_vpc.main.id
 
     tags = {
-      "Name" = var.tag
+      project = var.project
+      env = var.env
     }
 }
 
-resource "aws_route_table" "Terr_Route_table" {
+resource "aws_route_table" "main_route_table" {
     vpc_id = aws_vpc.main.id
 
     route {
@@ -23,7 +25,8 @@ resource "aws_route_table" "Terr_Route_table" {
     }
 
     tags = {
-      "Name" = var.tag
+      project = var.project
+      env = var.env
     }
 
 }
