@@ -1,5 +1,8 @@
 name: Build TF docker image
-on: [push]
+on:
+  push:
+    paths:
+      - containers/terraform/Dockerfile
 jobs:
   build:
     name: build docker image
@@ -13,7 +16,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
       - name: Build and Push
         uses: docker/build-push-action@v4
         with:
