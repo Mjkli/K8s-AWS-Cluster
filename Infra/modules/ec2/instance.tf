@@ -8,7 +8,9 @@ resource "aws_instance" "ec2_instance"{
     }
     
     tags = {
-        "Name" = var.tag
+      "Name" = var.vpc_name
+      project = var.project
+      env = var.env
     }
 }
 
@@ -16,6 +18,7 @@ resource "aws_network_interface" "net_int" {
     subnet_id = var.subnet
     private_ips = var.private_ips
     tags = {
-        "Name" = var.tag
+      project = var.project
+      env = var.env
     }
 }

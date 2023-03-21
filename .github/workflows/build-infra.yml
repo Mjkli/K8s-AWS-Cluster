@@ -1,5 +1,9 @@
-name: Build Infrastructure
-on: ["push"]
+name: Build Dev Infrastructure
+on:
+  push:
+    paths:
+      - Infra/modules
+      - Infra/dev
 jobs:
   build:
     name: Check and deploy terraform

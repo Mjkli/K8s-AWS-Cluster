@@ -9,3 +9,8 @@ availability_zone = "us-west-1a"
 
     # Subnet 1
         subnet_1_cidr = "10.0.0.0/24"
+
+# Ansible EC2
+    ansible_ami = ""
+    ansible_instance_type = "t2.micro"
+    ansible_ip = "10.0.0.10"
