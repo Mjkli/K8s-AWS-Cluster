@@ -20,3 +20,5 @@ jobs:
           file: containers/terraform/Dockerfile
           push: true
           tags: iac/terraform:latest
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
