@@ -1,6 +1,3 @@
-variable "access_key"{}
-variable "secret_key"{}
-
 # Global variables
 variable "project" {}
 variable "env" {}
