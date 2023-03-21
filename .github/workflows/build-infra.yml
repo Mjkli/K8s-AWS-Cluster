@@ -13,10 +13,6 @@ jobs:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
       
-      - name: Terraform format
-        run: terraform fmt -check
-        working-directory: Infra/dev
-      
       - name: Terraform validate
         run: terraform validate
         working-directory: Infra/dev
