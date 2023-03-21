@@ -1,9 +1,16 @@
-variable "access_key"{}
-variable "secret_key"{}
 
 
 provider "aws"{
     region = "us-west-1"
-    access_key = "${var.access_key}"
-    secret_key = "${var.secret_key}"
 }
+
+terraform {
+  backend "s3"{
+    encrypt = true
+    bucket = "state-storage-mjkli"
+    key = "iac-tf-state"
+    region = "us-west-1"
+  }
+}
+
+
