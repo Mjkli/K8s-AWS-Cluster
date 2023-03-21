@@ -1,5 +1,6 @@
 module "main-vpc"{
     source = "../modules/network/vpc"
+    vpc_name = "${var.project}-${var.env}-vpc"
     vpc_cidr_block = var.vpc_cidr_block
     project = var.project
     env = var.env
