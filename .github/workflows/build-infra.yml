@@ -2,13 +2,14 @@ name: Build Infrastructure
 on: ["push"]
 jobs:
   build:
-    name: Check terraform
+    name: Check and deploy terraform
     runs-on: ubuntu-latest
     container: mjkli/iac-terraform:latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: "us-west-1"
+      working-directory: Infra/dev
     steps:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
