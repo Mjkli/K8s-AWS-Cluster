@@ -15,6 +15,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Build and Push
-          run: |
-            cd containers/terraform/
-            docker build -t iac-terraform:latest .
+        uses: docker/build-push-action@v4
+        with:
+          context: containers/terraform
+          file: ./Dockerfile
+          push: true
+          tags: iac/terraform:latest
