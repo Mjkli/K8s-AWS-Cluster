@@ -1,4 +1,4 @@
-output ansible-public-ip {
-  value       = module.ansible.public_ip
+output "ansible-public-ip" {
+  value       = module.ansible-eip.public_ip
   sensitive   = false
 }

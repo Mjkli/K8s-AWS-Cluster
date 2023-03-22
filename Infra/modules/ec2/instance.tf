@@ -1,7 +1,6 @@
 resource "aws_instance" "ec2_instance"{
     ami = var.ami
     instance_type = var.instance_type
-    associate_public_ip_address = var.need_public_ip
 
     network_interface {
         network_interface_id = aws_network_interface.net_int.id
@@ -18,7 +17,7 @@ resource "aws_instance" "ec2_instance"{
 
 resource "aws_network_interface" "net_int" {
     subnet_id = var.subnet
-    private_ips = var.private_ips
+    private_ips = ["${var.private_ip}"]
     tags = {
       project = var.project
       env = var.env

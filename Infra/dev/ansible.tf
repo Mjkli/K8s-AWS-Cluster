@@ -3,10 +3,15 @@ module "ansible-server" {
     ami = var.ansible_ami
     instance_type = var.ansible_instance_type
     subnet = module.subnet-1.id
-    private_ips = var.ansible_ip
+    private_ip = var.ansible_ip
     project = var.project
     env = var.env
     name = "ansible-${var.project}-${var.env}"
-    need_public_ip = var.need_public_ip
 
+}
+
+module "ansible-eip" {
+    source = "../modules/network/eip"
+    private_ip = var.ansible_ip
+    network_interface = module.ansible-server.nic_id
 }

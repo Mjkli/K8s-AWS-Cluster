@@ -1,3 +1,3 @@
-output public_ip {
-    value = aws_instance.ec2_instance.pu
+output "nic_id"{
+    value = aws_network_interface.net_int.id
 }
