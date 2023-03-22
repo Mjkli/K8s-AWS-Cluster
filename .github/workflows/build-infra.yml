@@ -2,8 +2,8 @@ name: Build Dev Infrastructure
 on:
   push:
     paths:
-      - Infra/modules/*
-      - Infra/dev/*
+      - Infra/*
+      - Infra/modules/**
 jobs:
   build:
     name: Check and deploy terraform
