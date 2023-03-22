@@ -4,7 +4,7 @@ module "main-vpc"{
     vpc_cidr_block = var.vpc_cidr_block
     project = var.project
     env = var.env
-}
+} 
 
 module "subnet-1" {
     source = "../modules/network/subnet"
