@@ -1,5 +1,5 @@
 module "ansible-server" {
-    source = "../modules/ec2"
+    source = "../modules/ec2/instance"
     ami = var.ansible_ami
     instance_type = var.ansible_instance_type
     subnet = module.subnet-1.id
@@ -7,11 +7,18 @@ module "ansible-server" {
     project = var.project
     env = var.env
     name = "ansible-${var.project}-${var.env}"
+    key_name = "${var.project}-${var.env}-${var.key_name}"
 
 }
 
+# Attaching elastic IP here because it will control what ec2 instances gets a public IP
 module "ansible-eip" {
     source = "../modules/network/eip"
     private_ip = var.ansible_ip
     network_interface = module.ansible-server.nic_id
+}
+
+module "ansible_key" {
+    source = "../modules/ec2/key_pair"
+    key_name = "${var.project}-${var.env}-${var.key_name}"
 }

@@ -14,3 +14,5 @@ availability_zone = "us-west-1a"
     ansible_ami = "ami-06604eb73be76c003"
     ansible_instance_type = "t2.micro"
     ansible_ip = "10.0.0.10"
+# SSH Key
+    key_name = "ansible_key"

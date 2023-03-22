@@ -5,3 +5,4 @@ variable "private_ip" {}
 variable "project" {}
 variable "env" {}
 variable "name" {}
+variable "key_name" {}

@@ -14,5 +14,7 @@ variable "availability_zone" {}
     variable ansible_ami {}
     variable ansible_instance_type {}
     variable ansible_ip {}
+# SSH Key
+    variable key_name {}
     
 
