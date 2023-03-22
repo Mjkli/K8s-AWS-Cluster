@@ -13,4 +13,4 @@ availability_zone = "us-west-1a"
 # Ansible EC2
     ansible_ami = ""
     ansible_instance_type = "t2.micro"
-    ansible_ip = "10.0.0.10" 
+    ansible_ip = ["10.0.0.10"] 

@@ -6,5 +6,6 @@ module "ansible-server" {
     private_ips = var.ansible_ip
     project = var.project
     env = var.env
+    name = "ansible-${var.project}-${var.env}"
 
 }

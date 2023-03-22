@@ -8,6 +8,7 @@ resource "aws_instance" "ec2_instance"{
     }
     
     tags = {
+      "Name" = var.name
       project = var.project
       env = var.env
     }
