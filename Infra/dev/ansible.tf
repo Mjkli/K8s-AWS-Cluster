@@ -7,5 +7,6 @@ module "ansible-server" {
     project = var.project
     env = var.env
     name = "ansible-${var.project}-${var.env}"
+    need_public_ip = var.need_public_ip
 
 }

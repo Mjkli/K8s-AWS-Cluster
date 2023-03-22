@@ -1,10 +1,12 @@
 resource "aws_instance" "ec2_instance"{
     ami = var.ami
     instance_type = var.instance_type
+    associate_public_ip_address = var.need_public_ip
 
     network_interface {
         network_interface_id = aws_network_interface.net_int.id
-        device_index = 0 
+        device_index = 0
+        
     }
     
     tags = {
