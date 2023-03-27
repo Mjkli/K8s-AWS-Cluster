@@ -34,7 +34,7 @@ availability_zone = "us-west-1a"
         #worker_node_3_ip = "10.0.0.22"
 
 # RDS Instance
-db_storage = 1
+db_storage = 10
 db_name = "ipamdb"
 db_engine = "mysql"
 db_version = "8.0.32"
