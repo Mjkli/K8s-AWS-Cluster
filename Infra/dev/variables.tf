@@ -33,4 +33,17 @@ variable "availability_zone" {}
     # Worker Node 3
         #variable worker_node_3_ip {}
 
+# RDS Instance
+variable db_storage {}
+variable db_name {}
+variable db_engine {}
+variable db_version {}
+variable db_class {}
+variable db_username {
+    sensitive = true
+}
+variable db_password {
+    sensitive = true
+}
+
 
