@@ -16,7 +16,7 @@ jobs:
       AWS_DEFAULT_REGION: "us-west-1"
       TF_VAR_DB_USERNAME: ${{ secrets.DB_USERNAME }}
       TF_VAR_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      TF_VAR_test: ${{ secrets.test }}
+      TF_VAR_test: ${{ variables.test }}
     steps:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
