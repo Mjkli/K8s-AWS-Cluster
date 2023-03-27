@@ -17,4 +17,20 @@ variable "availability_zone" {}
 # SSH Key
     variable key_name {}
     
+# Master Node EC2
+    variable master_node_ami {}
+    variable master_node_instance_type {}
+    variable masterNode_ip {}
+
+# Worker Node EC2
+    variable worker_node_ami {}
+    variable worker_node_instance_type {}
+
+    # Worker Node 1
+        variable worker_node_1_ip {}
+    # Worker Node 2
+        variable worker_node_2_ip {}
+    # Worker Node 3
+        #variable worker_node_3_ip {}
+
 

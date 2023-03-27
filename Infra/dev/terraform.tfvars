@@ -16,3 +16,19 @@ availability_zone = "us-west-1a"
     ansible_ip = "10.0.0.10"
 # SSH Key
     key_name = "ansible_key"
+
+# Master Node EC2
+    master_node_ami = "ami-06604eb73be76c003"
+    master_node_instance_type = "t2.micro"
+    masterNode_ip = "10.0.0.11"
+
+# Worker Node EC2
+    worker_node_ami = "ami-06604eb73be76c003"
+    worker_node_instance_type = "t2.micro"
+
+    # Worker Node 1
+        worker_node_1_ip = "10.0.0.20"
+    # Worker Node 1
+        worker_node_2_ip = "10.0.0.21"
+    # Worker Node 1
+        #worker_node_3_ip = "10.0.0.22"
