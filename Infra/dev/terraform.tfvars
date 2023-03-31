@@ -14,8 +14,23 @@ availability_zone = "us-west-1a"
     ansible_ami = "ami-06604eb73be76c003"
     ansible_instance_type = "t2.micro"
     ansible_ip = "10.0.0.10"
+
 # SSH Key
     key_name = "ansible_key"
+
+    # Ansible Security Group
+    ansible_sg_ingress = [{
+      from_port = 22
+      to_port = 22
+      protocol = "TCP"
+      cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
+    }]
+    ansible_sg_egress = [{
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }]
 
 # Master Node EC2
     master_node_ami = "ami-06604eb73be76c003"

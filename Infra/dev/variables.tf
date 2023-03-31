@@ -16,6 +16,11 @@ variable "availability_zone" {}
     variable ansible_ip {}
 # SSH Key
     variable key_name {}
+
+# Ansible security group
+    variable ansible_sg_ingress {}
+    variable ansible_sg_egress {}
+    
     
 # Master Node EC2
     variable master_node_ami {}

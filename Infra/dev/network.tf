@@ -14,3 +14,13 @@ module "subnet-1" {
     project = var.project
     env = var.env
 }
+
+module "ansible_sg" {
+    source = "../modules/network/security_groups"
+    vpc_id = module.main-vpc.id
+    ingress = var.ansible_sg_ingress
+    egress = var.ansible_sg_egress
+    project = var.project
+    env = var.env
+    
+}
