@@ -1,5 +1,5 @@
 module "ansible-server" {
-    source = "../modules/ec2/instance"
+    source = "../modules/ec2/instance_public"
     ami = var.ansible_ami
     instance_type = var.ansible_instance_type
     subnet = module.subnet-1.id
@@ -8,6 +8,7 @@ module "ansible-server" {
     env = var.env
     name = "ansible-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
+    security_groups = [module.ansible_sg.id]
 
 }
 

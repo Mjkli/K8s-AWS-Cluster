@@ -6,3 +6,4 @@ variable project {}
 variable env {}
 variable name {}
 variable key_name {}
+variable security_groups {}
