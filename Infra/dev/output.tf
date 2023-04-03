@@ -4,6 +4,6 @@ output "ansible-public-ip" {
 }
 
 output "tls_key" {
-  value = module.ansible_key.public_key
+  value = module.ansible_key.private_key
   sensitive = true
 }
