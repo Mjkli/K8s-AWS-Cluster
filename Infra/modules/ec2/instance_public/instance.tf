@@ -20,8 +20,15 @@ resource "aws_network_interface" "net_int" {
     subnet_id = var.subnet
     private_ips = ["${var.private_ip}"]
     security_groups = var.security_groups
+
     tags = {
       project = var.project
       env = var.env
     }
+}
+
+resource "aws_eip" "elastic-ip" {
+  vpc = true
+  network_interface = aws_network_interface.net_int.id
+  associate_with_private_ip = var.private_ip
 }
