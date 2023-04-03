@@ -7,7 +7,8 @@ module "ansible-server" {
     project = var.project
     env = var.env
     name = "ansible-${var.project}-${var.env}"
-    key_name = "${var.project}-${var.env}-${var.key_name}"
+    #key_name = "${var.project}-${var.env}-${var.key_name}"
+    key_name = "test"
     security_groups = [module.ansible_sg.id]
 
 }

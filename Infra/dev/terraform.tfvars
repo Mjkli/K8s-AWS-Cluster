@@ -11,7 +11,7 @@ availability_zone = "us-west-1a"
         subnet_1_cidr = "10.0.0.0/24"
 
 # Ansible EC2
-    ansible_ami = "ami-06604eb73be76c003"
+    ansible_ami = "ami-014d05e6b24240371"
     ansible_instance_type = "t2.micro"
     ansible_ip = "10.0.0.10"
 
@@ -33,12 +33,12 @@ availability_zone = "us-west-1a"
     }]
 
 # Master Node EC2
-    master_node_ami = "ami-06604eb73be76c003"
+    master_node_ami = "ami-014d05e6b24240371"
     master_node_instance_type = "t2.micro"
     masterNode_ip = "10.0.0.11"
 
 # Worker Node EC2
-    worker_node_ami = "ami-06604eb73be76c003"
+    worker_node_ami = "ami-014d05e6b24240371"
     worker_node_instance_type = "t2.micro"
 
     # Worker Node 1
