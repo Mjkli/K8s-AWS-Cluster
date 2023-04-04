@@ -1,5 +1,5 @@
 output "ansible-public-ip" {
-  value       = module.ansible-server.public_dns
+  value       = module.ansible_eip.public_dns
   sensitive   = true
 }
 

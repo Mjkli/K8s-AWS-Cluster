@@ -19,6 +19,7 @@ resource "aws_instance" "ec2_instance"{
 resource "aws_network_interface" "net_int" {
     subnet_id = var.subnet
     private_ips = ["${var.private_ip}"]
+    security_groups = var.security_groups
     tags = {
       project = var.project
       env = var.env

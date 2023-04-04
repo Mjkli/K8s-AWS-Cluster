@@ -8,6 +8,7 @@ module "master_node" {
     env = var.env
     name = "master-node-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
+    security_groups = []
 
 
 }
