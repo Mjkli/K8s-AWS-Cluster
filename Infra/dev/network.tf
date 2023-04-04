@@ -13,4 +13,5 @@ module "subnet-1" {
     availability_zone = var.availability_zone
     project = var.project
     env = var.env
+    rt_id = module.main-vpc.rt_id
 }

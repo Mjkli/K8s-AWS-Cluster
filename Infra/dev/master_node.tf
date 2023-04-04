@@ -10,5 +10,4 @@ module "master_node" {
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.ansible_sg.id]
 
-
 }
