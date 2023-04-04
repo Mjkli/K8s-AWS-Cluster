@@ -8,7 +8,7 @@ module "worker_node_1" {
     env = var.env
     name = "worker-node-2-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
-    security_groups = []
+    security_groups = null
 
 }
 
@@ -22,6 +22,6 @@ module "worker_node_2" {
     env = var.env
     name = "worker-node-2-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
-    security_groups = []
+    security_groups = null
 
 }
