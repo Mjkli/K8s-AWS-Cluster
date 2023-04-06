@@ -10,7 +10,7 @@ variable "availability_zone" {}
     # subnet-1
         variable subnet_1_cidr {}
     # subnet-2
-        variable subnet_1_cidr {}    
+        variable subnet_2_cidr {}    
 
 # Ansible EC2
     variable ansible_ami {}

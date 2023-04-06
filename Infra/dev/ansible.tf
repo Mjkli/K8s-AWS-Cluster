@@ -2,7 +2,7 @@ module "ansible_server" {
     source = "../modules/ec2/instance"
     ami = var.ansible_ami
     instance_type = var.ansible_instance_type
-    subnet = module.subnet-1.id
+    subnet = module.subnet-1-public.id
     private_ip = var.ansible_ip
     project = var.project
     env = var.env

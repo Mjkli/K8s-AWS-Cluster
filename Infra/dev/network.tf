@@ -4,7 +4,7 @@ module "main-vpc"{
     vpc_cidr_block = var.vpc_cidr_block
     project = var.project
     env = var.env
-    subnet_id = module.subnet-1.id
+    private_subnet_id = module.subnet-2-private.id
 } 
 
 module "subnet-1-public" {
