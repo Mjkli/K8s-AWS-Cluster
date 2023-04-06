@@ -1,4 +1,4 @@
-module "ansible-server" {
+module "ansible_server" {
     source = "../modules/ec2/instance"
     ami = var.ansible_ami
     instance_type = var.ansible_instance_type
@@ -14,9 +14,9 @@ module "ansible-server" {
 
 module "ansible_eip" {
     source = "../modules/network/eip"
-    nic = module.ansible-server.nic_id
-    private_ip = module.ansible-server.private_ip
-    instance_id = module.ansible-server.id
+    nic = module.ansible_server.nic_id
+    private_ip = module.ansible_server.private_ip
+    instance_id = module.ansible_server.id
 }
 
 module "ansible_key" {

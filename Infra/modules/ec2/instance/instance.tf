@@ -5,8 +5,7 @@ resource "aws_instance" "ec2_instance"{
 
     network_interface {
         network_interface_id = aws_network_interface.net_int.id
-        device_index = 0
-        
+        device_index = 0   
     }
     
     tags = {
