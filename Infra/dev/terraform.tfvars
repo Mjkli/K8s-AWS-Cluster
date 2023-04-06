@@ -9,6 +9,8 @@ availability_zone = "us-west-1a"
 
     # Subnet 1
         subnet_1_cidr = "10.0.0.0/24"
+    # Subnet 1
+        subnet_2_cidr = "10.0.1.0/24"
 
 # Ansible EC2
     ansible_ami = "ami-014d05e6b24240371"
@@ -42,9 +44,9 @@ availability_zone = "us-west-1a"
     worker_node_instance_type = "t2.micro"
 
     # Worker Node 1
-        worker_node_1_ip = "10.0.0.20"
+        worker_node_1_ip = "10.0.1.20"
     # Worker Node 1
-        worker_node_2_ip = "10.0.0.21"
+        worker_node_2_ip = "10.0.1.21"
     # Worker Node 1
         #worker_node_3_ip = "10.0.0.22"
 
