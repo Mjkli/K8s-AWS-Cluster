@@ -3,7 +3,7 @@ This project is an all encompasing use of infrastrucutre as code.
 My Goal was to be able to construct a Kubernetes structure from scratch in the most seamless way possible.
 
 There are some manual steps that i needed to configure such as
-  installing ansible
+  conncting ansible/master-node to github ci
   connecting ansible to the other nodes in the cluster.
 
 0. Github-CI should be able to build and run all that i need to deploy my infrastructure
