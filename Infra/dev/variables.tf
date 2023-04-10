@@ -39,6 +39,8 @@ variable "availability_zone" {}
         variable worker_node_2_ip {}
     # Worker Node 3
         #variable worker_node_3_ip {}
+    variable worker_sg_ingress {}
+    variable worker_sg_egress {}
 
 # RDS Instance
 variable db_storage {}

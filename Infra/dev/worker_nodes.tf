@@ -8,7 +8,7 @@ module "worker_node_1" {
     env = var.env
     name = "worker-node-2-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
-    security_groups = null
+    security_groups = module.worker_sg.id
 }
 
 module "worker_node_2" {
@@ -21,6 +21,15 @@ module "worker_node_2" {
     env = var.env
     name = "worker-node-2-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
-    security_groups = null
+    security_groups = module.worker_sg.id
 
+}
+
+module "worker_sg" {
+    source = "../modules/network/security_groups"
+    vpc_id = module.main-vpc.id
+    ingress = var.worker_sg_ingress
+    egress = var.worker_sg_egress
+    project = var.project
+    env = var.env
 }

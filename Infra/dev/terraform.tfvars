@@ -50,6 +50,20 @@ availability_zone = "us-west-1a"
     # Worker Node 1
         #worker_node_3_ip = "10.0.0.22"
 
+    # worker Node Security Group
+    worker_sg_ingress = [{
+      from_port = 22
+      to_port = 22
+      protocol = "TCP"
+      cidr_blocks = ["10.0.0.0/16"] 
+    }]
+    worker_sg_egress = [{
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }]
+
 # RDS Instance
 db_storage = 10
 db_name = "ipamdb"
