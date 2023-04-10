@@ -17,7 +17,6 @@ variable "RUNNER_TOKEN" {}
     variable ansible_ami {}
     variable ansible_instance_type {}
     variable ansible_ip {}
-    variable ansible_user_data {}
 # SSH Key
     variable key_name {}
 
