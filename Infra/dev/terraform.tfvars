@@ -9,7 +9,7 @@ availability_zone = "us-west-1a"
 
     # Subnet 1
         subnet_1_cidr = "10.0.0.0/24"
-    # Subnet 1
+    # Subnet 2
         subnet_2_cidr = "10.0.1.0/24"
 
 # Ansible EC2

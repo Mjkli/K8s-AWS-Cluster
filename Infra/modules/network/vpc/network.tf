@@ -26,7 +26,6 @@ resource "aws_default_route_table" "public_route_table" {
         gateway_id = aws_internet_gateway.igw.id
       }
     
-    
     tags = {
         project = var.project
         env = var.env
@@ -39,7 +38,7 @@ resource "aws_eip" "nat_eip" {
 
 resource "aws_nat_gateway" "private_nat" {
     allocation_id = aws_eip.nat_eip.id
-    subnet_id = var.private_subnet_id
+    subnet_id = var.public_subnet_id
 }
 
 
