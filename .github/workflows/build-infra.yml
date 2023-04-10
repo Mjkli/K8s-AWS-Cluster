@@ -36,7 +36,7 @@ jobs:
         run: exit 1
       
       - name: Terrafrom Apply
-        run: terraform apply -auto-approve -input=false -var "db_username=${{ secrets.DB_USERNAME }}" -var "db_password=${{ secrets.DB_PASSWORD }}"
+        run: terraform apply -auto-approve -input=false -var "db_username=${{ secrets.DB_USERNAME }}" -var "db_password=${{ secrets.DB_PASSWORD }}" -var "RUNNER_TOKEN=${{ secrets.RUNNER_TOKEN }}"
         working-directory: Infra/dev
 
 
