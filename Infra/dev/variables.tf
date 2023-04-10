@@ -2,6 +2,7 @@
 variable "project" {}
 variable "env" {}
 variable "availability_zone" {}
+variable "RUNNER_TOKEN" {}
 
 # Network
     # VPC
