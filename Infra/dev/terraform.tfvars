@@ -16,19 +16,6 @@ availability_zone = "us-west-1a"
     ansible_ami = "ami-014d05e6b24240371"
     ansible_instance_type = "t2.micro"
     ansible_ip = "10.0.0.10"
-    ansible_user_data = <<-EOL
-    #! /bin/bash -xe
-    apt update
-    apt upgrade -y
-    apt install ansible -y
-
-    mkdir actions-runner && cd actions-runner
-    curl -o actions-runner-linux-x64-2.303.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.303.0/actions-runner-linux-x64-2.303.0.tar.gz
-    tar xzf ./actions-runner-linux-x64-2.303.0.tar.gz
-
-    ./config.sh --url https://github.com/Mjkli/IAC_full --token "${ var.RUNNER_TOKEN }"
-
-    EOL
 
 # SSH Key
     key_name = "ansible_key"
