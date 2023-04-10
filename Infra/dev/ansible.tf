@@ -4,11 +4,13 @@ module "ansible_server" {
     instance_type = var.ansible_instance_type
     subnet = module.subnet-1-public.id
     private_ip = var.ansible_ip
+    key_name = "${var.project}-${var.env}-${var.key_name}"
+    security_groups = [module.ansible_sg.id]
+    user_data = var.ansible_user_data
+
     project = var.project
     env = var.env
     name = "ansible-${var.project}-${var.env}"
-    key_name = "${var.project}-${var.env}-${var.key_name}"
-    security_groups = [module.ansible_sg.id]
 
 }
 

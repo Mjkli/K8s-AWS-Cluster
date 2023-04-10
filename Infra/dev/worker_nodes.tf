@@ -9,6 +9,7 @@ module "worker_node_1" {
     name = "worker-node-2-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.worker_sg.id]
+    user_data = var.worker_user_data
 }
 
 module "worker_node_2" {
@@ -22,6 +23,7 @@ module "worker_node_2" {
     name = "worker-node-2-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.worker_sg.id]
+    user_data = var.worker_user_data
 
 }
 

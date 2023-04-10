@@ -6,6 +6,7 @@ module "master_node" {
     private_ip = var.masterNode_ip
     project = var.project
     env = var.env
+    user_data = var.worker_user_data
     name = "master-node-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.ansible_sg.id]

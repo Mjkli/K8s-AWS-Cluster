@@ -16,6 +16,12 @@ availability_zone = "us-west-1a"
     ansible_ami = "ami-014d05e6b24240371"
     ansible_instance_type = "t2.micro"
     ansible_ip = "10.0.0.10"
+    ansible_user_data = <<-EOL
+    #! /bin/bash -xe
+    apt update
+    apt upgrade -y
+    apt install ansible -y
+    EOL
 
 # SSH Key
     key_name = "ansible_key"
@@ -42,6 +48,12 @@ availability_zone = "us-west-1a"
 # Worker Node EC2
     worker_node_ami = "ami-014d05e6b24240371"
     worker_node_instance_type = "t2.micro"
+    worker_user_data = <<-EOL
+    #! /bin/bash -xe
+    apt update
+    apt upgrade -y
+    apt install ansible -y
+    EOL
 
     # Worker Node 1
         worker_node_1_ip = "10.0.1.20"

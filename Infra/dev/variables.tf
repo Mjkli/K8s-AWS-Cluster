@@ -16,6 +16,7 @@ variable "availability_zone" {}
     variable ansible_ami {}
     variable ansible_instance_type {}
     variable ansible_ip {}
+    variable ansible_user_data {}
 # SSH Key
     variable key_name {}
 
@@ -32,6 +33,7 @@ variable "availability_zone" {}
 # Worker Node EC2
     variable worker_node_ami {}
     variable worker_node_instance_type {}
+    variable "worker_user_data" {}
 
     # Worker Node 1
         variable worker_node_1_ip {}
