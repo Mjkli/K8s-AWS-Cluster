@@ -24,7 +24,7 @@ module "ansible_server" {
     echo "export RUNNER_TOKEN=$(cat token.txt)" >> /etc/environment
     rm token.txt
     
-    sudo -H -u ubuntu bash -c 'source /etc/environment && ./config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --name ansible --unattended --runasservice'
+    sudo -H -u ubuntu bash -c 'source /etc/environment && ./config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --name ansible --labels ansible --unattended --runasservice'
     sudo -H -u ubuntu bash -c './run.sh &'
 
     EOL
