@@ -7,10 +7,10 @@ module "ansible_server" {
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.ansible_sg.id]
     user_data = <<-EOL
-    #! /bin/bash -xe
+    #! /bin/bash
     apt update
     apt upgrade -y
-    apt install ansible -y
+    apt install ansible jq -y
 
     cd /home/ubuntu
     mkdir actions-runner && cd actions-runner
@@ -19,7 +19,10 @@ module "ansible_server" {
 
     chown -R ubuntu /home/ubuntu
 
-    sudo -u ubuntu bash -c './config.sh --url https://github.com/Mjkli/IAC_full --token ${var.RUNNER_TOKEN} --unattended > output.txt'
+    export token=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${var.api_token}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/mjkli/iac_full/actions/runners/registration-token | jq -r '.token')
+    echo "export RUNNER_TOKEN=$token" >> /home/ubuntu/.bashrc
+    source /home/ubuntu/.bashrc
+    sudo -u ubuntu bash -c './config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --unattended > output.txt'
     sudo -u ubuntu bash -c './run.sh &'
 
     EOL
