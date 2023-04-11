@@ -19,11 +19,13 @@ module "ansible_server" {
 
     chown -R ubuntu /home/ubuntu
 
-    export token=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${var.api_token}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/mjkli/iac_full/actions/runners/registration-token | jq -r '.token')
-    echo "export RUNNER_TOKEN=$token" >> /home/ubuntu/.bashrc
-    source /home/ubuntu/.bashrc
-    sudo -u ubuntu bash -c './config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --unattended > output.txt'
-    sudo -u ubuntu bash -c './run.sh &'
+
+    echo "$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${var.api_token}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/mjkli/iac_full/actions/runners/registration-token | jq -r '.token')" > token.txt
+    echo "export RUNNER_TOKEN=$(cat token.txt)" >> /etc/environment
+    rm token.txt
+    
+    sudo -H -u ubuntu bash -c 'source /etc/environment && ./config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --name ansible --unattended --runasservice'
+    sudo -H -u ubuntu bash -c './run.sh &'
 
     EOL
 
