@@ -1,0 +1,19 @@
+name: Configure Infrastructure
+#on:
+#  push:
+#    paths:
+#      - Config/**
+on: ["push"]
+jobs:
+  check:
+    name: check nodes
+    runs-on: [self-hosted, ansible]
+    steps:
+      - name: Checkout the repository to the runner
+        uses: actions/checkout@v2
+      
+      - name: Change Dir
+        run: cd config
+      
+      - name: Ping
+        run: ansible -i hosts all -m ping
