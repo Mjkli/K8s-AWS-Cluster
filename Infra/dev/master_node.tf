@@ -4,16 +4,13 @@ module "master_node" {
     instance_type = var.master_node_instance_type
     subnet = module.subnet-1-public.id
     private_ip = var.masterNode_ip
-    project = var.project
-    env = var.env
-    name = "master-node-${var.project}-${var.env}"
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.ansible_sg.id]
     user_data = <<-EOL
     #! /bin/bash
     apt update
     apt upgrade -y
-    apt install ansible jq -y
+    apt install jq -y
 
     cd /home/ubuntu
     mkdir actions-runner && cd actions-runner
@@ -32,4 +29,15 @@ module "master_node" {
 
     EOL
 
+    project = var.project
+    env = var.env
+    name = "master-node-${var.project}-${var.env}"
+
+}
+
+module "masternode_eip" {
+    source = "../modules/network/eip"
+    nic = module.master_node.nic_id
+    private_ip = module.master_node.private_ip
+    instance_id = module.master_node.id
 }
