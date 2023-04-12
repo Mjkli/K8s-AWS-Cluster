@@ -15,5 +15,8 @@ jobs:
       - name: Change Dir
         run: cd config
       
+      - name: Check dir
+        run: pwd
+      
       - name: Ping
         run: ansible -i hosts all -m ping
