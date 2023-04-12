@@ -3,8 +3,7 @@ This project is an all encompasing use of infrastrucutre as code.
 My Goal was to be able to construct a Kubernetes structure from scratch in the most seamless way possible.
 
 There are some manual steps that i needed to configure such as
-  passing ssh key to ansible server so it can connect to other nodes. 
-  connecting ansible to the other nodes in the cluster.
+  passing ssh key to ansible server so it can connect to other nodes.
 
 0. Github-CI should be able to build and run all that i need to deploy my infrastructure
 1. Terraform will provision VMs in AWS and pass the correct information (IP address / ssh keys)

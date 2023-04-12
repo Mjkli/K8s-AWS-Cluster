@@ -1,0 +1,168 @@
+---
+- hosts: master_nodes
+  become: true
+  
+  tasks:
+  - include_vars: vars.yml
+
+  - name: Update apt repo and cache
+    apt:
+      update_cache: yes
+      force_apt_get: yes
+      cache_valid_time: 3600
+
+  - name: install_pre_packages
+    apt:
+      name: "{{ pre_packages }}"
+      state: present
+
+
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Set docker repository
+    ansible.builtin.apt_repository:
+      repo: "deb https://download.docker.com/linux/ubuntu jammy stable"
+      state: present
+      filename: docker.list
+      update_cache: yes
+
+  - name: Update apt repo and cache
+    apt:
+      update_cache: yes
+      force_apt_get: yes
+      cache_valid_time: 3600
+ 
+  - name: Upgrade packages on the server
+    apt:
+      upgrade: dist
+      force_apt_get: yes
+
+  - name: install_container_runtime
+    apt:
+      name: "{{ setup_packages }}"
+      state: present
+
+  - name: Start docker daemon
+    systemd:
+      name: docker
+      enabled: true
+      state: started
+  
+  - name: configuring docker group
+    group: 
+      name: docker
+      state: present
+  
+  - name: adding user to docker group
+    user:
+      name: adminuser
+      groups: docker, sudo
+      append: yes
+
+  - name: delete containerd config
+    file:
+      path: /etc/containerd/config.toml
+      state: absent
+
+  - name: Start containerd
+    systemd:
+      name: containerd
+      enabled: true
+      state: restarted
+  
+  - name: Start modprobe
+    community.general.modprobe:
+      name: br_netfilter
+      state: present
+
+  - name: copy new containerd file
+    copy:
+      src: master-node/config.toml
+      dest: /etc/containerd/config.toml
+    notify:
+      - restart containerd
+
+  - name: curl Google Cloud psk
+    ansible.builtin.get_url:
+      url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+      dest: /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+      mode: u+rwx
+
+  - name: adding k8 repo
+    ansible.builtin.apt_repository:
+      repo: deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+      update_cache: yes
+
+  - name: install kubelet kubectl
+    apt:
+      name: "{{ packages }}"
+      state: present
+
+  - name: Hold kubelet
+    ansible.builtin.dpkg_selections:
+      name: kubelet
+      selection: hold
+  
+  - name: Hold kubectl
+    ansible.builtin.dpkg_selections:
+      name: kubectl
+      selection: hold
+  
+  - name: Hold kubeadm
+    ansible.builtin.dpkg_selections:
+      name: kubeadm
+      selection: hold
+
+  - name: Check if worker node is already joined to the cluster
+    stat:
+      path: /etc/kubernetes/kubelet.conf
+    register: kubelet_file
+
+  - name: Configure kubeadm
+    become: true
+    shell: kubeadm init --apiserver-advertise-address={{ IPADDR }} --apiserver-cert-extra-sans={{ IPADDR }} --pod-network-cidr={{ pod_net }} --node-name {{ inventory_hostname }}
+    delegate_to: "{{ IPADDR }}"
+    when: not kubelet_file.stat.exists
+
+  - name: Sleep 50 sec
+    wait_for:
+      timeout: 50
+    when: not kubelet_file.stat.exists
+
+  - name: Enable service kubelet, and enable persistently
+    service: 
+      name: kubelet
+      enabled: yes
+
+  - name: Create kube dir
+    file:
+      path: $HOME/.kube
+      state: directory
+      mode: '0755'
+  
+  - name: copy flannel yml
+    become: true
+    template:
+      src: master-node/kube-flannel.yml.j2
+      dest: /kube-flannel.yml
+
+  - name: install pod network add-on
+    become: true
+    shell: kubectl apply -f /kube-flannel.yml
+
+  - name: Sleep 150 sec
+    wait_for:
+      timeout: 150
+    when: not kubelet_file.stat.exists
+
+
+  handlers:
+    - name: restart containerd
+      become: true
+      systemd:
+        name: containerd
+        state: restarted

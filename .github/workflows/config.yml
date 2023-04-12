@@ -17,3 +17,14 @@ jobs:
       
       - name: Ping
         run: ansible -i hosts all -m ping
+  configure_masterNode:
+    name: configure_masterNode
+    runs-on: [self-hosted, ansible]
+    steps:
+      - name: Checkout the repository to the runner
+        uses: actions/checkout@v2
+
+      - name: install kubernetes packages
+        run: ansible-playbook cluster_config.yml 
+
+

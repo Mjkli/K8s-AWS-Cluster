@@ -1,7 +1,9 @@
+# IPs defined here need to match what was stated in the Terraform tfvars file.
+
 [ansible_servers]
 10.0.0.10
 
-[gitlab_runners]
+[github_runners]
 10.0.0.10
 10.0.0.11
 
