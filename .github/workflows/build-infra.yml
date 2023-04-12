@@ -1,10 +1,10 @@
 name: Build Dev Infrastructure
-# on:
-#   push:
-#     paths:
-#       - Infra/*
-#       - Infra/modules/**
-on: ["push"]
+on:
+   push:
+     paths:
+       - Infra/*
+       - Infra/modules/**
+#on: ["push"]
 jobs:
   build:
     name: Check and deploy terraform
