@@ -4,6 +4,9 @@ name: Configure Infrastructure
 #    paths:
 #      - Config/**
 on: ["push"]
+defaults:
+  run:
+    working-directory: config
 jobs:
   check:
     name: check nodes
@@ -11,12 +14,6 @@ jobs:
     steps:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
-      
-      - name: Change Dir
-        run: cd config
-      
-      - name: Check dir
-        run: pwd
       
       - name: Ping
         run: ansible -i hosts all -m ping
