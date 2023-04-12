@@ -13,7 +13,6 @@ setup_packages:
   - docker-ce-cli
   - containerd.io
   - docker-compose-plugin
-  - azure-cli
 
 pre_packages:
   - apt-transport-https
