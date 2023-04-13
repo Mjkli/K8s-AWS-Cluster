@@ -140,7 +140,7 @@
 
   - name: Create kube dir
     file:
-      path: $HOME/.kube
+      path: /home/ubuntu/.kube
       state: directory
       mode: '0755'
   
@@ -148,18 +148,24 @@
     become: true
     copy:
       src: /etc/kubernetes/admin.conf
-      dest: $HOME/.kube/config
+      dest: /home/ubuntu/.kube/config
       remote_src: yes
       mode: '0644'
   
-  - name: copy flannel yml
+  - name: change owner of dir
     become: true
+    file:
+      path: /home/ubuntu/.kube/config
+      owner: ubuntu
+      group: ubuntu
+      mode: '0644'
+  
+  - name: copy flannel yml
     template:
       src: master-node/kube-flannel.yml.j2
       dest: /kube-flannel.yml
 
   - name: install pod network add-on
-    become: true
     shell: kubectl apply -f /kube-flannel.yml
 
   - name: Sleep 150 sec
