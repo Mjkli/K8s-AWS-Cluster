@@ -38,6 +38,35 @@ availability_zone = "us-west-1a"
     master_node_ami = "ami-014d05e6b24240371"
     master_node_instance_type = "t3.medium"
     masterNode_ip = "10.0.0.11"
+
+    # Ansible Security Group
+    masternode_sg_ingress = [{
+      # SSH service
+      from_port = 22
+      to_port = 22
+      protocol = "TCP"
+      cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
+    },
+    {
+      # Kubernetes API service
+      from_port = 6443
+      to_port = 6443
+      protocol = "TCP"
+      cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
+    },
+    {
+      # Kubernetes API service
+      from_port = 8080
+      to_port = 8080
+      protocol = "TCP"
+      cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
+    }]
+    masternode_sg_egress = [{
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }]
  
 # Worker Node EC2
     worker_node_ami = "ami-014d05e6b24240371"

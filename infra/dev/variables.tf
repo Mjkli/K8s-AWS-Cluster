@@ -32,6 +32,10 @@ variable "api_token" {
     variable master_node_instance_type {}
     variable masterNode_ip {}
 
+    # Master Node SG
+    variable masternode_sg_ingress {}
+    variable masternode_sg_egress {}
+
 # Worker Node EC2
     variable worker_node_ami {}
     variable worker_node_instance_type {}

@@ -41,3 +41,12 @@ module "masternode_eip" {
     private_ip = module.master_node.private_ip
     instance_id = module.master_node.id
 }
+
+module "masternode_sg"{
+    source = "../modules/network/security_groups"
+    vpc_id = module.main-vpc.id
+    ingress = var.masternode_sg_ingress
+    egress = var.masternode_sg_egress
+    project = var.project
+    env = var.env
+}

@@ -144,6 +144,14 @@
       state: directory
       mode: '0755'
   
+  - name: Copy kube config file
+    become: true
+    copy:
+      src: /etc/kubernetes/admin.conf
+      dest: $HOME/.kube/config
+      remote_src: yes
+      mode: '0644'
+  
   - name: copy flannel yml
     become: true
     template:
