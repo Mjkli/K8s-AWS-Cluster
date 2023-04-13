@@ -83,6 +83,10 @@ resource "null_resource" "copy_ssh_key" {
     destination = "/home/ubuntu/.ssh/ansible.pem"
   }
 
+  provisioner "remote-exec" {
+    inline = ["chmod 400 /home/ubuntu/.ssh/ansible.pem"]
+  }
+
   connection {
     type        = "ssh"
     user        = "ubuntu"
