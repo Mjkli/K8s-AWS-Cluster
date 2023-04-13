@@ -35,7 +35,6 @@ jobs:
         id: plan
         run: terraform plan -input=false -var "db_username=${{ secrets.DB_USERNAME }}" -var "db_password=${{ secrets.DB_PASSWORD }}" -var "api_token=${{ secrets.API_KEY }}"
 
-      
       - name: Terraform Plan status
         if: steps.plan.outcome == 'failure'
         run: exit 1

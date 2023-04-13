@@ -17,8 +17,10 @@ jobs:
       
       - name: Ping
         run: ansible -i hosts all -m ping
+
   configure_masterNode:
     name: configure_masterNode
+    needs: check
     runs-on: [self-hosted, ansible]
     steps:
       - name: Checkout the repository to the runner
