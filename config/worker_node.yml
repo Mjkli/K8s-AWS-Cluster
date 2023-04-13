@@ -131,9 +131,9 @@
       selection: hold
 
   - name: Copy join command to worker nodes.
-    become: yes
+    become: false
     copy:
-      src: /home/gitlab-runner/kubernetes_join_command
+      src: /home/ubuntu/kubernetes_join_command
       dest: /tmp/kubernetes_join_command
       mode: 0777  
 
