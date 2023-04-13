@@ -38,6 +38,6 @@ jobs:
         uses: actions/checkout@v2
       
       - name: install workernodes
-        run: ansible-playbook -i hosts woker_node.yml
+        run: ansible-playbook -i hosts worker_node.yml
 
 
