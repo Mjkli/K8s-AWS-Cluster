@@ -46,7 +46,6 @@ availability_zone = "us-west-1a"
     #! /bin/bash -xe
     apt update
     apt upgrade -y
-    apt install ansible -y
     EOL
 
     # Worker Node 1

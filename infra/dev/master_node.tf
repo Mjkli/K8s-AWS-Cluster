@@ -24,7 +24,7 @@ module "master_node" {
     echo "export RUNNER_TOKEN=$(cat token.txt)" >> /etc/environment
     rm token.txt
     
-    sudo -H -u ubuntu bash -c 'source /etc/environment && ./config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --name master-node --labels master-node --unattended --runasservice'
+    sudo -H -u ubuntu bash -c 'source /etc/environment && ./config.sh --url https://github.com/Mjkli/IAC_full --token $RUNNER_TOKEN --name master-node --labels master-node --unattended --runasservice --replace'
     sudo -H -u ubuntu bash -c './run.sh &'
 
     EOL
