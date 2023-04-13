@@ -36,12 +36,12 @@ availability_zone = "us-west-1a"
 
 # Master Node EC2
     master_node_ami = "ami-014d05e6b24240371"
-    master_node_instance_type = "t2.micro"
+    master_node_instance_type = "t3.medium"
     masterNode_ip = "10.0.0.11"
 
 # Worker Node EC2
     worker_node_ami = "ami-014d05e6b24240371"
-    worker_node_instance_type = "t2.micro"
+    worker_node_instance_type = "t3.medium"
     worker_user_data = <<-EOL
     #! /bin/bash -xe
     apt update
