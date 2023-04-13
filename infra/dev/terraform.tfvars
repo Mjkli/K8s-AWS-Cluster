@@ -52,14 +52,14 @@ availability_zone = "us-west-1a"
       from_port = 6443
       to_port = 6443
       protocol = "TCP"
-      cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
+      cidr_blocks = ["10.0.0.0/16"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
     },
     {
       # Kubernetes API service
       from_port = 8080
       to_port = 8080
       protocol = "TCP"
-      cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
+      cidr_blocks = ["10.0.0.0/16"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
     }]
     masternode_sg_egress = [{
         from_port = 0
@@ -88,6 +88,12 @@ availability_zone = "us-west-1a"
     worker_sg_ingress = [{
       from_port = 22
       to_port = 22
+      protocol = "TCP"
+      cidr_blocks = ["10.0.0.0/16"] 
+    },
+    {
+      from_port = 6443
+      to_port = 6443
       protocol = "TCP"
       cidr_blocks = ["10.0.0.0/16"] 
     }]
