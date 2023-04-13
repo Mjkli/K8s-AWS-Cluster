@@ -48,8 +48,8 @@ availability_zone = "us-west-1a"
       cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
     },
     {
-      from_port = -1
-      to_port = -1
+      from_port = 0
+      to_port = 0
       protocol = "-1"
       cidr_blocks = ["10.0.0.0/16"] 
     }]
@@ -78,8 +78,8 @@ availability_zone = "us-west-1a"
 
     # worker Node Security Group
     worker_sg_ingress = [{
-      from_port = -1
-      to_port = -1
+      from_port = 0
+      to_port = 0
       protocol = "-1"
       cidr_blocks = ["10.0.0.0/16"] 
     }]
