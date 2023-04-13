@@ -166,6 +166,7 @@
       dest: /kube-flannel.yml
 
   - name: install pod network add-on
+    become: false
     shell: kubectl apply -f /kube-flannel.yml
 
   - name: Sleep 150 sec
