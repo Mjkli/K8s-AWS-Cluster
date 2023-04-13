@@ -2,8 +2,9 @@ name: Build Dev Infrastructure
 on:
    push:
      paths:
-       - Infra/*
-       - Infra/modules/**
+       - infra/*
+       - infra/modules/**
+       - infra/dev/**
 #on: ["push"]
 defaults:
   run:
