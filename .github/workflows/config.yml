@@ -27,6 +27,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: install kubernetes packages
-        run: ansible-playbook -i hosts cluster_config.yml 
+        run: ansible-playbook -i hosts cluster_config.yml
+  
+  configure_workerNodes:
+    name: configure_workernodes
+    needs: configure_masterNode
+    runs-on: [self-hosted, ansible]
+    steps:
+      - name: Checkout the repository to the runner
+        uses: actions/checkout@v2
+      
+      - name: install workernodes
+        run: ansible-playbook -i hosts woker_node.yml
 
 
