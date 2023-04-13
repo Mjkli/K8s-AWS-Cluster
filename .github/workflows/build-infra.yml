@@ -5,6 +5,7 @@ on:
       - infra/*
       - infra/modules/**
       - infra/dev/**
+      - .github/workflows/build-infra.yml
 #on: ["push"]
 defaults:
   run:
@@ -41,6 +42,9 @@ jobs:
       
       - name: Terrafrom Apply
         run: terraform apply -auto-approve -input=false -var "db_username=${{ secrets.DB_USERNAME }}" -var "db_password=${{ secrets.DB_PASSWORD }}" -var "api_token=${{ secrets.API_KEY }}"
+      
+      - name: Wait 2 min for runners to apply
+        run: sleep 120
 
 
 

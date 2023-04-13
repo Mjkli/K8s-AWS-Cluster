@@ -14,6 +14,7 @@ resource "aws_instance" "ec2_instance"{
       project = var.project
       env = var.env
     }
+
 }
 
 resource "aws_network_interface" "net_int" {

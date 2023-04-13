@@ -6,6 +6,8 @@ module "ansible_server" {
     private_ip = var.ansible_ip
     key_name = "${var.project}-${var.env}-${var.key_name}"
     security_groups = [module.ansible_sg.id]
+
+    # I dont like the idea of having a gigantic blob script here. But I needed to pass the api variable that terraform gets to the script.
     user_data = <<-EOL
     #! /bin/bash
     apt update
@@ -55,4 +57,36 @@ module "ansible_sg" {
     project = var.project
     env = var.env
     
+}
+
+
+resource "local_file" "key" {
+    content = module.ansible_key.private_key
+    filename = "ansible.pem"
+}
+
+
+resource "null_resource" "copy_ssh_key" {
+
+  # Changes to the instance will cause the null_resource to be re-executed
+  triggers = {
+    instance_ids = module.ansible_server.id
+  }
+
+  # makes sure the that machine is up before trying to copy file over.
+  provisioner "remote-exec" {
+    inline = ["echo 'Hello World'"]
+  }
+
+  provisioner "file" {
+    source = local_file.key.filename
+    destination = "/home/ubuntu/.ssh/ansible.pem"
+  }
+
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = module.ansible_key.private_key
+    host        = module.ansible_eip.public_dns
+  }
 }
