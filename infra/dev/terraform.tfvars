@@ -38,7 +38,7 @@ availability_zone = "us-west-1a"
     master_node_ami = "ami-014d05e6b24240371"
     master_node_instance_type = "t3.medium"
     masterNode_ip = "10.0.0.11"
-
+ 
 # Worker Node EC2
     worker_node_ami = "ami-014d05e6b24240371"
     worker_node_instance_type = "t3.medium"

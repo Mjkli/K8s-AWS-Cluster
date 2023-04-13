@@ -1,10 +1,10 @@
 name: Build Dev Infrastructure
 on:
-   push:
-     paths:
-       - infra/*
-       - infra/modules/**
-       - infra/dev/**
+  push:
+    paths:
+      - infra/*
+      - infra/modules/**
+      - infra/dev/**
 #on: ["push"]
 defaults:
   run:
