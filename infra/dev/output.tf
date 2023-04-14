@@ -7,3 +7,7 @@ output "tls_key" {
   value = module.ansible_key.private_key
   sensitive = true
 }
+
+output "rds_public_dns" {
+  value = module.ipam_db.public_dns
+}
