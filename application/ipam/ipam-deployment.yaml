@@ -38,5 +38,4 @@ spec:
             containerPort: 80
       imagePullSecrets:
         - name: regcred
-      resources: {}
         
