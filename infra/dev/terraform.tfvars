@@ -39,7 +39,7 @@ availability_zone = "us-west-1a"
     master_node_instance_type = "t3.medium"
     masterNode_ip = "10.0.0.11"
 
-    # Ansible Security Group
+    # masterNode Security Group
     masternode_sg_ingress = [{
       # SSH service
       from_port = 22
