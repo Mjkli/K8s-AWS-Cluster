@@ -63,4 +63,7 @@ variable db_password {
     sensitive = true
 }
 
+# Ipam ECR
+variable ipam_ecr_name {}
+
 

@@ -96,3 +96,6 @@ db_name = "ipamdb"
 db_engine = "mysql"
 db_version = "8.0.32"
 db_class = "db.t2.micro"
+
+# IPAM ECR
+ipam_ecr_name = "iac-ipam"
