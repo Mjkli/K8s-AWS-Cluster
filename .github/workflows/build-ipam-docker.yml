@@ -25,6 +25,6 @@ jobs:
           ECR_REPOSITORY: iac-ipam
           IMAGE_TAG: latest
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG containers/ipam/Dockerfile
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG containers/ipam/
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     
