@@ -7,7 +7,7 @@ There are some manual steps that i needed to configure such as
    - This is okay because in a real environmnet these would be created after infra is up anyways. although this will cause errors in ci deployment initially.
    - establishing db secret in k8s so that k8 deployment can use it when being deployed.
   
-  configuring Secrets inside k8s so that the deployments can worker_node.yml
+  configuring Secrets inside k8s so that the deployments can work
     - ECR secret
       -- kubectl create secret docker-registry regcred \
           --docker-server=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
