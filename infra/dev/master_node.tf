@@ -5,7 +5,7 @@ module "master_node" {
     subnet = module.subnet-1-public.id
     private_ip = var.masterNode_ip
     key_name = "${var.project}-${var.env}-${var.key_name}"
-    security_groups = [module.ansible_sg.id]
+    security_groups = [module.masternode_sg.id]
     user_data = <<-EOL
     #! /bin/bash
     apt update
