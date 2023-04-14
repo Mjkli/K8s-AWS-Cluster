@@ -36,7 +36,7 @@ spec:
         ports:
           - name: web
             containerPort: 80
-        resources: {}
-        imagePullSecrets:
-          - name: regcred
+      imagePullSecrets:
+        - name: regcred
+      resources: {}
         
