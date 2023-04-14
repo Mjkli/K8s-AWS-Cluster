@@ -2,19 +2,6 @@
 This project is an all encompasing use of infrastrucutre as code.
 My Goal was to be able to construct a Kubernetes structure from scratch in the most seamless way possible.
 
-There are some manual steps that i needed to configure such as
-  Passing db and ecr values to k8 deployment scripts after infra is established.
-   - This is okay because in a real environmnet these would be created after infra is up anyways. although this will cause errors in ci deployment initially.
-   - establishing db secret in k8s so that k8 deployment can use it when being deployed.
-  
-  configuring Secrets inside k8s so that the deployments can work
-    - ECR secret
-      -- kubectl create secret docker-registry regcred \
-          --docker-server=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
-          --docker-username=AWS \
-          --docker-password=$(aws ecr get-login-password) \
-    - DB secret
-      kubectl create secret generic db-access --from-literal=username=DB_USERNAME --from-literal=password=DB_secret
 
 
 0. Github-CI should be able to build and run all that i need to deploy my infrastructure
@@ -23,6 +10,23 @@ There are some manual steps that i needed to configure such as
 2.1. Ansible will install and deploy the cluster. Currently it is setup as 1 master node and 3 worker nodes. Adding workernodes to the cluster should be as simple as adding it in terraform and ansible (host file).
 3. Kubernetes should then deploy the applications that I specify. (phpIPAM)
 4. Ideally if I wanted to destroy everything. I should be able to run the pipeline again and have everything back to up fresh again.
+
+
+Caviates - 
+There are some manual steps that i needed to configure such as
+   - Passing db and ecr values to k8 deployment scripts after infra is established. (image uri / rds endpoint)
+    - This is okay because in a real environmnet these would be created after infra is up anyways. although this will cause errors in ci deployment initially.
+
+  - Configuring Secrets inside k8s so that the deployments can work
+    - ECR secret
+      -- kubectl create secret docker-registry regcred \
+          --docker-server=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
+          --docker-username=AWS \
+          --docker-password=$(aws ecr get-login-password) \
+    - DB secret
+      kubectl create secret generic db-access --from-literal=username=DB_USERNAME --from-literal=password=DB_secret
+  
+  Once the secrets are created in k8s. We can continue with the deployment of deployments / pods to k8s. 
 
 
 - Infra
