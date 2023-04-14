@@ -2,7 +2,7 @@ name: Configure Infrastructure
 on:
   push:
     paths:
-      - Config/**
+      - config/**
 #on: ["push"]
 defaults:
   run:
@@ -39,15 +39,3 @@ jobs:
       
       - name: install workernodes
         run: ansible-playbook -i hosts worker_node.yml
-
-  deploy_ipam:
-    name: deploy_ipam
-    needs: configure_workernodes
-    runs-on: [self-hosted, master-node]
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
-      
-      - name: deploy ipam
-        run: kubectl apply -f application/ipam/ipam-deployment.yaml
-

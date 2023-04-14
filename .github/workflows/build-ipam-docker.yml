@@ -1,5 +1,8 @@
 name: Deploy to ECR
-on: ["push"]
+on:
+  push:
+    paths:
+      - containers/ipam/Dockerfile
 jobs:
   build:
     name: Build Image

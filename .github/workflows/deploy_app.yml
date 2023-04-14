@@ -1,0 +1,19 @@
+name: Deploy Applications
+# on:
+#   push:
+#     paths:
+#       - application/**
+on: ["push"]
+defaults:
+  run:
+    working-directory: application
+jobs:
+  deploy_ipam:
+    name: check nodes
+    runs-on: [self-hosted, master-node]
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      
+      - name: deploy ipam
+        run: kubectl apply -f ipam/ipam-deployment.yaml
