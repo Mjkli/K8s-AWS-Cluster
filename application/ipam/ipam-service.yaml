@@ -8,4 +8,6 @@ spec:
     app: ipam
   ports:
     - port: 80
+      targetport: 80
+      nodePort: 30080
       protocol: TCP

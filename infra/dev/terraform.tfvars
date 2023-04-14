@@ -56,7 +56,7 @@ availability_zone = "us-west-1a"
     {
       from_port = 80
       to_port = 80
-      protocol = "-1"
+      protocol = "TCP"
       cidr_blocks = ["0.0.0.0/0"] 
     }]
     masternode_sg_egress = [{
