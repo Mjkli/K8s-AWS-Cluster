@@ -54,8 +54,8 @@ availability_zone = "us-west-1a"
       cidr_blocks = ["10.0.0.0/16"] 
     },
     {
-      from_port = 80
-      to_port = 80
+      from_port = 30080
+      to_port = 30080
       protocol = "TCP"
       cidr_blocks = ["0.0.0.0/0"] 
     }]
