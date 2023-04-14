@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: ipam-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: ipam
   ports:
