@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: ipam
+  #namespace: ipam-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ipam
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ipam
+    spec:
+      containers:
+      - image: 
+        name: ipam-amp
+        env:
+          - name: IPAM_DATABASE_HOST
+            value: terraform-20230414174513156700000001.conkgordvt9b.us-west-1.rds.amazonaws.com
+          - name: IPAM_DATABASE_NAME
+            value: ipamdb
+          - name: IPAM_DATABASE_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-access
+                key: username
+          - name: IPAM_DATABASE_PASS
+            valueFrom:
+              secretKeyRef:
+                name: db-access
+                key: password
+        resources: {}
+        

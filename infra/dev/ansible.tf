@@ -59,6 +59,9 @@ module "ansible_sg" {
     
 }
 
+# Ideally we dont want to pass private key to the ansible server.
+# Best practices should take advantage of a service like Vault or similar.
+# I just dont use it in this project.
 
 resource "local_file" "key" {
     content = module.ansible_key.private_key

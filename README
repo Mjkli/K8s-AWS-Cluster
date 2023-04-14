@@ -3,13 +3,16 @@ This project is an all encompasing use of infrastrucutre as code.
 My Goal was to be able to construct a Kubernetes structure from scratch in the most seamless way possible.
 
 There are some manual steps that i needed to configure such as
+  Passing db and ecr values to k8 deployment scripts after infra is established.
+   - This is okay because in a real environmnet these would be created after infra is up anyways. although this will cause errors in ci deployment initially.
+   - establishing db secret in k8s so that k8 deployment can use it when being deployed.
+
 
 0. Github-CI should be able to build and run all that i need to deploy my infrastructure
 1. Terraform will provision VMs in AWS and pass the correct information (IP address / ssh keys)
 2. Ansible will provision the nodes to be setup and ready for kubernetes.
 2.1. Ansible will install and deploy the cluster. Currently it is setup as 1 master node and 3 worker nodes. Adding workernodes to the cluster should be as simple as adding it in terraform and ansible (host file).
 3. Kubernetes should then deploy the applications that I specify. (phpIPAM)
-
 4. Ideally if I wanted to destroy everything. I should be able to run the pipeline again and have everything back to up fresh again.
 
 
