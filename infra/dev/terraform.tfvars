@@ -48,9 +48,9 @@ availability_zone = "us-west-1a"
       cidr_blocks = ["0.0.0.0/0"] # Never allow everyone to access ssh like this. This server will only be up when i am working on it so this should be fine 
     },
     {
-      from_port = 80
-      to_port = 80
-      protocol = "TCP"
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
       cidr_blocks = ["10.0.0.0/16"] 
     }]
     masternode_sg_egress = [{
