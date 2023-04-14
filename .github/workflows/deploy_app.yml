@@ -17,3 +17,6 @@ jobs:
       
       - name: deploy ipam
         run: kubectl apply -f ipam/ipam-deployment.yaml
+
+      - name: deploy ipam service
+        run: kubectl apply -f ipam/ipam-service.yaml
