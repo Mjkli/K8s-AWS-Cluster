@@ -1,9 +1,9 @@
 name: Configure Infrastructure
-#on:
-#  push:
-#    paths:
-#      - Config/**
-on: ["push"]
+on:
+  push:
+    paths:
+      - Config/**
+#on: ["push"]
 defaults:
   run:
     working-directory: config

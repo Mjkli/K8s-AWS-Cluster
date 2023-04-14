@@ -1,7 +1,0 @@
-FROM snipe/snipe-it
-
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-ENV APP_KEY=base64:D5oGA+zhFSVA3VwuoZoQ21RAcwBtJv/RGiqOcZ7BUvI=
-ENV APP_TIMEZONE=US/Pacific
-ENV APP_LOCALE=en
