@@ -9,7 +9,7 @@ defaults:
     working-directory: application
 jobs:
   deploy_ipam:
-    name: check nodes
+    name: deploy Ipam pods
     runs-on: [self-hosted, master-node]
     steps:
       - name: Checkout the repository

@@ -16,8 +16,8 @@ spec:
         app: ipam
     spec:
       containers:
-      - image: 
-        name: ipam-amp
+      - image: 181066809772.dkr.ecr.us-west-1.amazonaws.com/iac-ipam
+        name: ipam
         env:
           - name: IPAM_DATABASE_HOST
             value: terraform-20230414174513156700000001.conkgordvt9b.us-west-1.rds.amazonaws.com
