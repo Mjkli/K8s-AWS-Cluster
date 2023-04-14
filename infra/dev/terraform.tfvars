@@ -52,6 +52,12 @@ availability_zone = "us-west-1a"
       to_port = 0
       protocol = "-1"
       cidr_blocks = ["10.0.0.0/16"] 
+    },
+    {
+      from_port = 80
+      to_port = 80
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"] 
     }]
     masternode_sg_egress = [{
         from_port = 0

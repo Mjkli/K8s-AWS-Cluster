@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: ipam-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: ipam
   ports:
