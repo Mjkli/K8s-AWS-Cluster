@@ -11,3 +11,7 @@ output "tls_key" {
 output "rds_public_dns" {
   value = module.ipam_db.public_dns
 }
+
+output "ipam_ecr" {
+  value = module.ipam_ecr.url
+}
