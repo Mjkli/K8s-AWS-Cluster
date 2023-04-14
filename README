@@ -26,7 +26,7 @@ There are some manual steps that i needed to configure such as
     - DB secret
       kubectl create secret generic db-access --from-literal=username=DB_USERNAME --from-literal=password=DB_secret
   
-  Once the secrets are created in k8s. We can continue with the deployment of deployments / pods to k8s. 
+  Once the secrets are created in k8s. We can continue with the deployment of deployments and pods to k8s. 
 
 
 - Infra
