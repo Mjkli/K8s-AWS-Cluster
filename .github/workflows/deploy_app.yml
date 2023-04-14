@@ -1,9 +1,10 @@
 name: Deploy Applications
-# on:
-#   push:
-#     paths:
-#       - application/**
-on: ["push"]
+on:
+  push:
+    paths:
+      - application/**
+      - .github/workflows/deploy_app.yml
+#on: ["push"]
 defaults:
   run:
     working-directory: application
